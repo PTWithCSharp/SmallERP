@@ -1,0 +1,32 @@
+# Build Folders
+bin/
+obj/
+packages/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Database
+*.mdf
+*.ldf
+
+# Configuration
+appsettings*.json
+appsettings*.Development.json
+
+# Temporary files
+*.tmp
+*.cache
+*.tlog
+
+# IDE-specific
+.idea/
+.vscode/
+
+# EF Migrations
+Migrations/

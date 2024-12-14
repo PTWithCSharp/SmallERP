@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Company Registration";
+}
+
+<h2>RegistrationForm</h2>
+
+<div class="card card-default">
+    <div class="card-header">Registration Form
+    @ViewBag.Message
+    </div>
+    <div class="card-body">
+
+        @using (Html.BeginForm("RegistrationForm", "CompanyRegistration",FormMethod.Post,new {@id="example-form"}))
+        {
+            @Html.AntiForgeryToken()
+            <div>
+                <h4>
+                    User Account
+                    <br>
+                    <small>Enter User Information</small>
+                </h4>
+                <fieldset>
+                    <label for="userName">User name *</label>
+                    <input class="form-control required" id="UserName" name="UserName" type="text">
+                    <label for="password">Password *</label>
+                    <input class="form-control required" id="Password" name="Password" type="password">
+                    <label for="confirm">Confirm Password *</label>
+                    <input class="form-control required" id="CPassword" name="CPassword" type="password">
+                    <p>(*) Mandatory</p>
+                </fieldset>
+                <h4>
+                    Personal Profile
+                    <br>
+                    <small>Enter Employee Profile</small>
+                </h4>
+                <fieldset>
+                    <label for="name">Employee name *</label>
+                    <input class="form-control required" id="EName" name="EName" type="text">
+                    <label for="surname">Contact Number *</label>
+                    <input class="form-control required" id="EContactNo" name="EContactNo" type="text">
+                    <label for="email">Email *</label>
+                    <input class="form-control required" id="EEmail" name="EEmail" type="text">
+                    <label >CNIC</label>
+                    <input class="form-control required" id="ECNIC" name="ECNIC" type="text">
+                    <label>Designation</label>
+                    <input class="form-control required" id="EDesignation" name="EDesignation" type="text">
+                    <label>Description</label>
+                    <input class="form-control" id="EDescription" name="EDescription" type="text">
+                    <label>Basic Salary</label>
+                    <input class="form-control required" id="EMonthlySalary" name="EMonthlySalary" type="text">
+                    <label for="address">Address</label>
+                    <input class="form-control required" id="EAddress" name="EAddress" type="text">
+
+                    <p>(*) Mandatory</p>
+                </fieldset>
+                <h4>
+                    Company Profile
+                    <br>
+                    <small>Enter Company Information</small>
+                </h4>
+                <fieldset>
+                    <label for="name">Company name *</label>
+                    <input class="form-control required" id="CName" name="CName" type="text">
+                    <label>Branch name *</label>
+                    <input class="form-control required" id="BranchName" name="BranchName" type="text">
+                    <label>Branch Contact *</label>
+                    <input class="form-control required" id="BranchContact" name="BranchContact" type="text">
+                    <label>BranchAddress</label>
+                    <input class="form-control required" id="BranchAddress" name="BranchAddress" type="text">
+
+                    <p>(*) Mandatory</p>
+                </fieldset>
+                <h4>
+                    Finish
+                    <br>
+                    <small>Just Make Sure You Entered Correct Information</small>
+                </h4>
+                <fieldset>
+                    <p class="lead">One last check</p>
+                    <input type="submit" value="Submit Registration" class="btn btn-outline-success" />
+                </fieldset>
+            </div>
+        }
+        </div>
+</div>

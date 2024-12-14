@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DatabaseAccess.tblUserType>
+
+@{
+    ViewBag.Title = "List of All User Types";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="card">
+    <div class="card card-default">
+        <div class="card-header">
+            @Html.ActionLink("Add UserType", "Create", null, new { @style = "float:left", @class = "btn btn-primary" })
+
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.UserType)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <p class="text-success"><strong>  @Html.DisplayFor(modelItem => item.UserType)</strong></p>
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.UserTypeID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.UserTypeID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.UserTypeID })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserType)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.UserTypeID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.UserTypeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.UserTypeID })
+            </td>
+        </tr>
+    }
+
+    </table>*@

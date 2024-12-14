@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DatabaseAccess.tblCompany>
+
+@{
+    ViewBag.Title = "List of All Companies";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="card">
+    <div class="card card-default">
+    <div class="card-header">
+        @Html.ActionLink("Add Company","Create",null,new {@style="float:left",@class="btn btn-primary"})
+
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-info">Company</th>
+                        <th class="text-info">Logo</th>
+                        <th class="text-info">Settings</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                           <p class="text-success"><strong> @Html.DisplayFor(modelItem => item.Name) </strong></p>
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.Logo))
+                            {
+                                <img src="@Url.Content(item.Logo)" alt="Image" style="width:50px;height:50px;max-width:100%;height:auto;" />
+                            }
+
+
+                        </td>
+                        <td>
+                            @Html.ActionLink("Update Profile", "Edit", new { id = item.CompanyID }, new { @class = "btn btn-pill-left btn-inverse btn-primary fa fa-edit" })
+                            @Html.ActionLink("View Profile", "Details", new { id = item.CompanyID }, new { @class = "btn btn-pill-right btn-primary fa fa-exclamation" })
+                            @Html.ActionLink("Delete Profile", "Delete", new { id = item.CompanyID }, new { @class = "btn btn-pill-right btn-primary fa fa-exclamation" })
+                        </td>
+                    </tr>
+                }
+                </tbody>
+
+            </table>
+            </div>
+    </div>
+</div>
+    </div>
