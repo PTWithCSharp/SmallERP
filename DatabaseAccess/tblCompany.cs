@@ -11,7 +11,6 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
 
@@ -33,8 +32,6 @@ namespace DatabaseAccess
         }
     
         public int CompanyID { get; set; }
-
-        [Required(ErrorMessage ="*Required")]
         public string Name { get; set; }
         public string Logo { get; set; }
 

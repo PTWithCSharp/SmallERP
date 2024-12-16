@@ -32,9 +32,9 @@
                                     <p class="text-success"><strong>  @Html.DisplayFor(modelItem => item.UserType)</strong></p>
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.UserTypeID }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.UserTypeID }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.UserTypeID })
+                                    @Html.ActionLink("Update", "Edit", new { id = item.UserTypeID }, new { @class = "btn  btn-inverse btn-primary fa fa-edit" })
+                                    @Html.ActionLink("View", "Details", new { id = item.UserTypeID }, new { @class = "btn  btn-primary fa fa-exclamation" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.UserTypeID }, new { @class = "btn  btn-primary fa fa-exclamation" })
                                 </td>
                             </tr>
                         }

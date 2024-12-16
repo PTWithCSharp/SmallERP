@@ -11,8 +11,7 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tblFinancialYear
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,14 +23,9 @@ namespace DatabaseAccess
     
         public int FinancialYearID { get; set; }
         public int UserID { get; set; }
-
-        [Required(ErrorMessage = "*Required")]
-        [Display(Name = "Select Financial Year Start Date")]
         public string FinancialYear { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
-
-        [Display(Name ="Status")]
         public bool IsActive { get; set; }
     
         public virtual tblUser tblUser { get; set; }
