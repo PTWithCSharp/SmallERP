@@ -1,10 +1,9 @@
 ﻿@model DatabaseAccess.tblBranch
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add Branch";
 }
 
-<h2>Create</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -14,13 +13,13 @@
         <h4>tblBranch</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.BranchID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BranchID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BranchID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.BranchTypeID, "BranchTypeID", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -31,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BranchName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BranchName,"Branch Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BranchName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BranchName, "", new { @class = "text-danger" })
@@ -39,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BranchContact, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BranchContact,"Contact No" ,htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BranchContact, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BranchContact, "", new { @class = "text-danger" })
@@ -47,25 +46,25 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BranchAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BranchAddress,"Branch Address", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BranchAddress, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BranchAddress, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.CompanyID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CompanyID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CompanyID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BrchID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BrchID,"Select Branch", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BrchID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("BrchID",null,htmlAttributes: new {@class = "form-control"})
                 @Html.ValidationMessageFor(model => model.BrchID, "", new { @class = "text-danger" })
             </div>
         </div>

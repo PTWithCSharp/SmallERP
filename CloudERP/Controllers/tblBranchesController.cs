@@ -53,7 +53,7 @@ namespace CloudERP.Controllers
             }
             int companyId = 0;
             companyId = Convert.ToInt32(Convert.ToString(Session["CompanyID"]));
-            ViewBag.Branches = new SelectList(db.tblBranches.Where(c => c.CompanyID == companyId).ToList(), "BranchID", "BranchName");
+            ViewBag.BrchID = new SelectList(db.tblBranches.Where(c => c.CompanyID == companyId).ToList(), "BranchID", "BranchName");
             ViewBag.BranchTypeID = new SelectList(db.tblBranchTypes, "BranchTypeID", "BranchType");
             return View();
         }
@@ -79,7 +79,7 @@ namespace CloudERP.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Branches = new SelectList(db.tblBranches.Where(c => c.CompanyID == companyId).ToList(), "BranchID", "BranchName");
+            ViewBag.BrchID = new SelectList(db.tblBranches.Where(c => c.CompanyID == companyId).ToList(), "BranchID", "BranchName");
 
             ViewBag.BranchTypeID = new SelectList(db.tblBranchTypes, "BranchTypeID", "BranchType", tblBranch.BranchTypeID);
             return View(tblBranch);
@@ -103,7 +103,7 @@ namespace CloudERP.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Branches = new SelectList(db.tblBranches.Where(c => c.CompanyID == companyId).ToList(), "BranchID", "BranchName", tblBranch.BrchID);
+            ViewBag.BrchID = new SelectList(db.tblBranches.Where(c => c.CompanyID == companyId).ToList(), "BranchID", "BranchName", tblBranch.BrchID);
             ViewBag.BranchTypeID = new SelectList(db.tblBranchTypes, "BranchTypeID", "BranchType", tblBranch.BranchTypeID);
             return View(tblBranch);
         }
@@ -128,7 +128,7 @@ namespace CloudERP.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Branches = new SelectList(db.tblBranches.Where(c => c.CompanyID == companyId).ToList(), "BranchID", "BranchName", tblBranch.BrchID);
+            ViewBag.BrchID = new SelectList(db.tblBranches.Where(c => c.CompanyID == companyId).ToList(), "BranchID", "BranchName", tblBranch.BrchID);
             ViewBag.BranchTypeID = new SelectList(db.tblBranchTypes, "BranchTypeID", "BranchType", tblBranch.BranchTypeID);
             return View(tblBranch);
         }

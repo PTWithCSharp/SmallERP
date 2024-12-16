@@ -53,7 +53,7 @@
           <Key>
             <PropertyRef Name="BranchID" />
           </Key>
-          <Property Name="BranchID" Type="int" Nullable="false" />
+          <Property Name="BranchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BranchTypeID" Type="int" Nullable="false" />
           <Property Name="BranchName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BranchContact" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -144,7 +144,7 @@
           <Key>
             <PropertyRef Name="EmployeeID" />
           </Key>
-          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="ContactNo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Photo" Type="nvarchar" MaxLength="150" />
@@ -156,7 +156,7 @@
           <Property Name="MonthlySalary" Type="float" Nullable="false" />
           <Property Name="BranchID" Type="int" Nullable="false" />
           <Property Name="CompanyID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="tblFinancialYear">
           <Key>
