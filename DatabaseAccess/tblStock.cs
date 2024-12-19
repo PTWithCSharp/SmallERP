@@ -18,6 +18,8 @@ namespace DatabaseAccess
         public tblStock()
         {
             this.tblCustomerInvoiceDetails = new HashSet<tblCustomerInvoiceDetail>();
+            this.tblPurchaseCartDetails = new HashSet<tblPurchaseCartDetail>();
+            this.tblSaleCartDetails = new HashSet<tblSaleCartDetail>();
             this.tblSupplierInvoiceDetails = new HashSet<tblSupplierInvoiceDetail>();
         }
     
@@ -41,6 +43,10 @@ namespace DatabaseAccess
         public virtual tblCompany tblCompany { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCustomerInvoiceDetail> tblCustomerInvoiceDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPurchaseCartDetail> tblPurchaseCartDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblSaleCartDetail> tblSaleCartDetails { get; set; }
         public virtual tblUser tblUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSupplierInvoiceDetail> tblSupplierInvoiceDetails { get; set; }

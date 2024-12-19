@@ -40,6 +40,8 @@ namespace DatabaseAccess
         public virtual DbSet<tblEmployee> tblEmployees { get; set; }
         public virtual DbSet<tblFinancialYear> tblFinancialYears { get; set; }
         public virtual DbSet<tblPayroll> tblPayrolls { get; set; }
+        public virtual DbSet<tblPurchaseCartDetail> tblPurchaseCartDetails { get; set; }
+        public virtual DbSet<tblSaleCartDetail> tblSaleCartDetails { get; set; }
         public virtual DbSet<tblStock> tblStocks { get; set; }
         public virtual DbSet<tblSupplier> tblSuppliers { get; set; }
         public virtual DbSet<tblSupplierInvoice> tblSupplierInvoices { get; set; }
@@ -48,7 +50,5 @@ namespace DatabaseAccess
         public virtual DbSet<tblTransaction> tblTransactions { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblUserType> tblUserTypes { get; set; }
-
-       // public System.Data.Entity.DbSet<CloudERP.Models.BranchSuppliersMV> BranchSuppliersMVs { get; set; }
     }
 }
