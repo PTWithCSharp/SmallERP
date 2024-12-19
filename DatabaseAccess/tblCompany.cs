@@ -36,7 +36,7 @@ namespace DatabaseAccess
         public string Logo { get; set; }
 
         [NotMapped]
-        public HttpPostedFileBase LogoFile { get; set; }
+        public HttpPostedFileBase LogoFile { get; set; }    
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAccountControl> tblAccountControls { get; set; }

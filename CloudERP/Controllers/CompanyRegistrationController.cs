@@ -90,7 +90,7 @@ namespace CloudERP.Controllers
                         Designation = EDesignation,
                         Email = EEmail,
                         MonthlySalary = EMonthlySalary,
-                        UserID = user.UserID,
+
                         Name = EName,
                         Description = string.Empty,
                     };

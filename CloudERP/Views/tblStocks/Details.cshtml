@@ -1,0 +1,121 @@
+﻿@model DatabaseAccess.tblStock
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Product Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            Sale Price
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleUnitPrice)
+        </dd>
+
+        <dt>
+            Purchase Price
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentPurchaseUnitPrice)
+        </dd>
+
+        <dt>
+           Expiry Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            Manufacturing Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacture)
+        </dd>
+
+        <dt>
+            Threshold Quantity
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockTreshHoldQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            Branch
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblBranch.BranchName)
+        </dd>
+
+        <dt>
+            Category
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblCategory.categoryName)
+        </dd>
+
+        <dt>
+            Company
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblCompany.Name)
+        </dd>
+
+        <dt>
+            Added By
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblUser.FullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

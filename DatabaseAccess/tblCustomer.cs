@@ -22,7 +22,7 @@ namespace DatabaseAccess
     
         public int CustomerID { get; set; }
         public string Customername { get; set; }
-        public int CustomerContact { get; set; }
+        public string CustomerContact { get; set; }
         public string CustomerArea { get; set; }
         public string CustomerAddress { get; set; }
         public string Description { get; set; }

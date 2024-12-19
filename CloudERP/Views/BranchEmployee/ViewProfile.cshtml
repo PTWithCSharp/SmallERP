@@ -1,0 +1,118 @@
+﻿@model DatabaseAccess.tblEmployee
+
+@{
+    ViewBag.Title = "ViewProfile";
+}
+
+<h2>ViewProfile</h2>
+
+<div>
+    <h4>Employee Profile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Employee Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Contact No
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+
+        <dt>
+            Photo
+        </dt>
+
+        <dd>
+            @if (!string.IsNullOrEmpty(Model.Photo))
+            {
+                <img src="@Url.Content(Model.Photo)" alt="Image" style="width:50px;height:50px;max-width:100%;height:auto;" />
+            }
+
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            CNIC
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNIC)
+        </dd>
+
+        <dt>
+            Designation
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            Basic Salary
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthlySalary)
+        </dd>
+
+        <dt>
+            Branch
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblBranch.BranchName)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.tblCompany.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblCompany.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblUser.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblUser.FullName)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EmployeeUpdation", new { id = Model.EmployeeID }) |
+    @Html.ActionLink("Back to List", "Employee")
+</p>

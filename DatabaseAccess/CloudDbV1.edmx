@@ -92,7 +92,7 @@
           </Key>
           <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Customername" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="CustomerContact" Type="int" Nullable="false" />
+          <Property Name="CustomerContact" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="CustomerArea" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CustomerAddress" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="300" Nullable="false" />
@@ -156,7 +156,7 @@
           <Property Name="MonthlySalary" Type="float" Nullable="false" />
           <Property Name="BranchID" Type="int" Nullable="false" />
           <Property Name="CompanyID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" />
         </EntityType>
         <EntityType Name="tblFinancialYear">
           <Key>
@@ -194,8 +194,8 @@
           <Property Name="BranchID" Type="int" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="80" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="SaleUnitPrice" Type="int" Nullable="false" />
-          <Property Name="CurrentPurchaseUnitPrice" Type="int" Nullable="false" />
+          <Property Name="SaleUnitPrice" Type="float" Nullable="false" />
+          <Property Name="CurrentPurchaseUnitPrice" Type="float" Nullable="false" />
           <Property Name="ExpiryDate" Type="date" Nullable="false" />
           <Property Name="Manufacture" Type="date" Nullable="false" />
           <Property Name="StockTreshHoldQuantity" Type="int" Nullable="false" />
@@ -974,6 +974,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblUser_tblEmployee">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblEmployee" Type="Self.tblEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblEmployee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblUser_tblUserType">
           <End Role="tblUserType" Type="Self.tblUserType" Multiplicity="1" />
           <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
@@ -1226,6 +1238,10 @@
             <End Role="tblFinancialYear" EntitySet="tblFinancialYear" />
             <End Role="tblTransaction" EntitySet="tblTransaction" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblEmployee" Association="Self.FK_tblUser_tblEmployee">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblEmployee" EntitySet="tblEmployee" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblUser_tblUserType" Association="Self.FK_tblUser_tblUserType">
             <End Role="tblUserType" EntitySet="tblUserType" />
             <End Role="tblUser" EntitySet="tblUser" />
@@ -1423,6 +1439,10 @@
             <End Role="tblEmployee" EntitySet="tblEmployees" />
             <End Role="tblPayroll" EntitySet="tblPayrolls" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblEmployee" Association="CloudErpV1Model.FK_tblUser_tblEmployee">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblEmployee" EntitySet="tblEmployees" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblFinancialYear_tblUser" Association="CloudErpV1Model.FK_tblFinancialYear_tblUser">
             <End Role="tblUser" EntitySet="tblUsers" />
             <End Role="tblFinancialYear" EntitySet="tblFinancialYears" />
@@ -1542,7 +1562,7 @@
           <Key>
             <PropertyRef Name="BranchID" />
           </Key>
-          <Property Name="BranchID" Type="Int32" Nullable="false" />
+          <Property Name="BranchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BranchTypeID" Type="Int32" Nullable="false" />
           <Property Name="BranchName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BranchContact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1608,7 +1628,7 @@
           </Key>
           <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Customername" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerContact" Type="Int32" Nullable="false" />
+          <Property Name="CustomerContact" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="CustomerArea" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CustomerAddress" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
@@ -1676,7 +1696,7 @@
           <Key>
             <PropertyRef Name="EmployeeID" />
           </Key>
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
@@ -1688,10 +1708,11 @@
           <Property Name="MonthlySalary" Type="Double" Nullable="false" />
           <Property Name="BranchID" Type="Int32" Nullable="false" />
           <Property Name="CompanyID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
           <NavigationProperty Name="tblBranch" Relationship="CloudErpV1Model.FK_tblEmployee_tblBranch" FromRole="tblEmployee" ToRole="tblBranch" />
           <NavigationProperty Name="tblCompany" Relationship="CloudErpV1Model.FK_tblEmployee_tblCompany" FromRole="tblEmployee" ToRole="tblCompany" />
           <NavigationProperty Name="tblPayrolls" Relationship="CloudErpV1Model.FK_tblPayroll_tblEmployee" FromRole="tblEmployee" ToRole="tblPayroll" />
+          <NavigationProperty Name="tblUser" Relationship="CloudErpV1Model.FK_tblUser_tblEmployee" FromRole="tblEmployee" ToRole="tblUser" />
         </EntityType>
         <EntityType Name="tblFinancialYear">
           <Key>
@@ -1736,8 +1757,8 @@
           <Property Name="BranchID" Type="Int32" Nullable="false" />
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="SaleUnitPrice" Type="Int32" Nullable="false" />
-          <Property Name="CurrentPurchaseUnitPrice" Type="Int32" Nullable="false" />
+          <Property Name="SaleUnitPrice" Type="Double" Nullable="false" />
+          <Property Name="CurrentPurchaseUnitPrice" Type="Double" Nullable="false" />
           <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Manufacture" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="StockTreshHoldQuantity" Type="Int32" Nullable="false" />
@@ -1862,6 +1883,7 @@
           <NavigationProperty Name="tblCustomers" Relationship="CloudErpV1Model.FK_tblCustomer_tblUser" FromRole="tblUser" ToRole="tblCustomer" />
           <NavigationProperty Name="tblCustomerInvoices" Relationship="CloudErpV1Model.FK_tblCustomerInvoice_tblUser" FromRole="tblUser" ToRole="tblCustomerInvoice" />
           <NavigationProperty Name="tblCustomerPayments" Relationship="CloudErpV1Model.FK_tblCustomerPayment_tblUser" FromRole="tblUser" ToRole="tblCustomerPayment" />
+          <NavigationProperty Name="tblEmployees" Relationship="CloudErpV1Model.FK_tblUser_tblEmployee" FromRole="tblUser" ToRole="tblEmployee" />
           <NavigationProperty Name="tblFinancialYears" Relationship="CloudErpV1Model.FK_tblFinancialYear_tblUser" FromRole="tblUser" ToRole="tblFinancialYear" />
           <NavigationProperty Name="tblPayrolls" Relationship="CloudErpV1Model.FK_tblPayroll_tblUser" FromRole="tblUser" ToRole="tblPayroll" />
           <NavigationProperty Name="tblStocks" Relationship="CloudErpV1Model.FK_tblStock_tblUser" FromRole="tblUser" ToRole="tblStock" />
@@ -2390,6 +2412,18 @@
             </Principal>
             <Dependent Role="tblPayroll">
               <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblEmployee">
+          <End Type="CloudErpV1Model.tblUser" Role="tblUser" Multiplicity="0..1" />
+          <End Type="CloudErpV1Model.tblEmployee" Role="tblEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tblEmployee">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

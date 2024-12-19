@@ -48,5 +48,7 @@ namespace DatabaseAccess
         public virtual DbSet<tblTransaction> tblTransactions { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblUserType> tblUserTypes { get; set; }
+
+       // public System.Data.Entity.DbSet<CloudERP.Models.BranchSuppliersMV> BranchSuppliersMVs { get; set; }
     }
 }

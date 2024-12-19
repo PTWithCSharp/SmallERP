@@ -56,8 +56,35 @@ namespace CloudERP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,UserTypeID,FullName,Email,ContactNo,UserName,Password,IsActive")] tblUser tblUser)
+        public ActionResult Create(tblUser tblUser)
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+
+
+
+
+            if (ModelState.IsValid)
+            {
+                var findhead = db.tblUsers.Where(u => u.Email == tblUser.Email).FirstOrDefault();
+
+                if (findhead == null)
+                {
+                    db.tblUsers.Add(tblUser);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    ViewBag.Message = "Already Exists";
+                }
+
+
+            }
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");

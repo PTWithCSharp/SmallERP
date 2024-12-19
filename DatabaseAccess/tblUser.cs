@@ -24,6 +24,7 @@ namespace DatabaseAccess
             this.tblCustomers = new HashSet<tblCustomer>();
             this.tblCustomerInvoices = new HashSet<tblCustomerInvoice>();
             this.tblCustomerPayments = new HashSet<tblCustomerPayment>();
+            this.tblEmployees = new HashSet<tblEmployee>();
             this.tblFinancialYears = new HashSet<tblFinancialYear>();
             this.tblPayrolls = new HashSet<tblPayroll>();
             this.tblStocks = new HashSet<tblStock>();
@@ -56,6 +57,8 @@ namespace DatabaseAccess
         public virtual ICollection<tblCustomerInvoice> tblCustomerInvoices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCustomerPayment> tblCustomerPayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblEmployee> tblEmployees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblFinancialYear> tblFinancialYears { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

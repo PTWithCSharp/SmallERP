@@ -34,7 +34,7 @@ namespace DatabaseAccess
         public double MonthlySalary { get; set; }
         public int BranchID { get; set; }
         public int CompanyID { get; set; }
-        public int UserID { get; set; }
+        public Nullable<int> UserID { get; set; }
 
         [NotMapped]
         public HttpPostedFileBase LogoFile { get; set; }
@@ -43,5 +43,6 @@ namespace DatabaseAccess
         public virtual tblCompany tblCompany { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPayroll> tblPayrolls { get; set; }
+        public virtual tblUser tblUser { get; set; }
     }
 }

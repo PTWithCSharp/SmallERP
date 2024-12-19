@@ -1,0 +1,37 @@
+﻿@model DatabaseAccess.tblAccountControl
+
+
+@{
+    ViewBag.Title = "Account Control Details";
+}
+
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Account Control Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountControlName)
+        </dd>
+
+      
+
+        <dt>
+            Added By
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblUser.FullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccountControlID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

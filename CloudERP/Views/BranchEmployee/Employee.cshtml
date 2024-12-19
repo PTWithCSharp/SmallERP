@@ -37,7 +37,7 @@
                                 Designation
                             </th>
                             <th>
-                                User
+                                Have Account?
                             </th>
                             <th>Action</th>
                         </tr>
@@ -67,12 +67,22 @@
                                     @Html.DisplayFor(modelItem => item.Designation)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.UserID)
+                                    @{
+                                        var displayText = item.UserID == null ? "No" : "Yes";
+                                    }
+                                    <span>@displayText</span>
+
                                 </td>
                                 <td>
                                     @Html.ActionLink("Update", "EmployeeUpdation", new { id = item.EmployeeID }, new { @class = "btn  btn-inverse btn-primary fa fa-edit" })
-                      
+                                    @Html.ActionLink("Profile", "ViewProfile", new { id = item.EmployeeID }, new { @class = "btn  btn-primary fa fa-exclamation" })
                                     @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID }, new { @class = "btn  btn-primary fa fa-exclamation" })
+                                    @{ 
+                                        if(item.UserID == null)
+                                        {
+                                        @Html.ActionLink("Create User", "CreateUser", "UserSetting", new { employeeid = item.EmployeeID}, new { @class = "btn  btn-primary fa fa-exclamation" })
+                                        }
+                                    }
                                 </td>
                             </tr>
                         }

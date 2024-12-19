@@ -27,8 +27,8 @@ namespace DatabaseAccess
         public int BranchID { get; set; }
         public string ProductName { get; set; }
         public int Quantity { get; set; }
-        public int SaleUnitPrice { get; set; }
-        public int CurrentPurchaseUnitPrice { get; set; }
+        public double SaleUnitPrice { get; set; }
+        public double CurrentPurchaseUnitPrice { get; set; }
         public System.DateTime ExpiryDate { get; set; }
         public System.DateTime Manufacture { get; set; }
         public int StockTreshHoldQuantity { get; set; }

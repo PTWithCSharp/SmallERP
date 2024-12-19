@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -129,16 +129,32 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BranchEmployeeController.cs" />
     <Compile Include="Controllers\CompanyRegistrationController.cs" />
+    <Compile Include="Controllers\EPController.cs" />
     <Compile Include="Controllers\HeadEmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\tblAccountControlsController.cs" />
+    <Compile Include="Controllers\tblAccountHeadsController.cs" />
+    <Compile Include="Controllers\tblAccountSubControlsController.cs" />
     <Compile Include="Controllers\tblBranchesController.cs" />
+    <Compile Include="Controllers\tblCategoriesController.cs" />
     <Compile Include="Controllers\tblCompaniesController.cs" />
+    <Compile Include="Controllers\tblCustomersController.cs" />
+    <Compile Include="Controllers\tblFinancialYearsController.cs" />
+    <Compile Include="Controllers\tblStocksController.cs" />
+    <Compile Include="Controllers\tblSuppliersController.cs" />
     <Compile Include="Controllers\tblUsersController.cs" />
     <Compile Include="Controllers\tblUserTypesController.cs" />
+    <Compile Include="Controllers\UserFinancialYearController.cs" />
+    <Compile Include="Controllers\UserSettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperClass\Branch.cs" />
     <Compile Include="HelperClass\FileHelper.cs" />
+    <Compile Include="HelperClass\ListAccounts.cs" />
+    <Compile Include="Models\AccountControlMV.cs" />
+    <Compile Include="Models\BranchCustomerMV.cs" />
+    <Compile Include="Models\BranchSuppliersMV.cs" />
     <Compile Include="Models\CompanyRegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -413,6 +429,58 @@
     <Content Include="Views\BranchEmployee\EmployeeRegistration.cshtml" />
     <Content Include="Views\BranchEmployee\EmployeeUpdation.cshtml" />
     <Content Include="Views\BranchEmployee\Employee.cshtml" />
+    <Content Include="Views\BranchEmployee\ViewProfile.cshtml" />
+    <Content Include="Views\EP\EP404.cshtml" />
+    <Content Include="Views\EP\EP500.cshtml" />
+    <Content Include="Views\EP\EP600.cshtml" />
+    <Content Include="Views\EP\EP401.cshtml" />
+    <Content Include="Views\BranchEmployee\Delete.cshtml" />
+    <Content Include="Views\UserSetting\CreateUser.cshtml" />
+    <Content Include="Views\tblCategories\Create.cshtml" />
+    <Content Include="Views\tblCategories\Delete.cshtml" />
+    <Content Include="Views\tblCategories\Details.cshtml" />
+    <Content Include="Views\tblCategories\Edit.cshtml" />
+    <Content Include="Views\tblCategories\Index.cshtml" />
+    <Content Include="Views\tblStocks\Create.cshtml" />
+    <Content Include="Views\tblStocks\Delete.cshtml" />
+    <Content Include="Views\tblStocks\Details.cshtml" />
+    <Content Include="Views\tblStocks\Edit.cshtml" />
+    <Content Include="Views\tblStocks\Index.cshtml" />
+    <Content Include="Views\tblAccountHeads\Create.cshtml" />
+    <Content Include="Views\tblAccountHeads\Delete.cshtml" />
+    <Content Include="Views\tblAccountHeads\Details.cshtml" />
+    <Content Include="Views\tblAccountHeads\Edit.cshtml" />
+    <Content Include="Views\tblAccountHeads\Index.cshtml" />
+    <Content Include="Views\tblAccountControls\Create.cshtml" />
+    <Content Include="Views\tblAccountControls\Delete.cshtml" />
+    <Content Include="Views\tblAccountControls\Details.cshtml" />
+    <Content Include="Views\tblAccountControls\Edit.cshtml" />
+    <Content Include="Views\tblAccountControls\Index.cshtml" />
+    <Content Include="Views\tblAccountSubControls\Create.cshtml" />
+    <Content Include="Views\tblAccountSubControls\Delete.cshtml" />
+    <Content Include="Views\tblAccountSubControls\Details.cshtml" />
+    <Content Include="Views\tblAccountSubControls\Edit.cshtml" />
+    <Content Include="Views\tblAccountSubControls\Index.cshtml" />
+    <Content Include="Views\tblFinancialYears\Create.cshtml" />
+    <Content Include="Views\tblFinancialYears\Delete.cshtml" />
+    <Content Include="Views\tblFinancialYears\Details.cshtml" />
+    <Content Include="Views\tblFinancialYears\Edit.cshtml" />
+    <Content Include="Views\tblFinancialYears\Index.cshtml" />
+    <Content Include="Views\UserFinancialYear\Index.cshtml" />
+    <Content Include="Views\tblCustomers\Create.cshtml" />
+    <Content Include="Views\tblCustomers\Delete.cshtml" />
+    <Content Include="Views\tblCustomers\Details.cshtml" />
+    <Content Include="Views\tblCustomers\Edit.cshtml" />
+    <Content Include="Views\tblCustomers\Index.cshtml" />
+    <Content Include="Views\tblCustomers\AllCustomer.cshtml" />
+    <Content Include="Views\tblSuppliers\Create.cshtml" />
+    <Content Include="Views\tblSuppliers\Delete.cshtml" />
+    <Content Include="Views\tblSuppliers\Details.cshtml" />
+    <Content Include="Views\tblSuppliers\Edit.cshtml" />
+    <Content Include="Views\tblSuppliers\Index.cshtml" />
+    <Content Include="Views\tblCustomers\SubBranchCustomer.cshtml" />
+    <Content Include="Views\tblSuppliers\SubBranchSupplier.cshtml" />
+    <Content Include="Views\tblSuppliers\AllSupplier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -485,10 +553,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

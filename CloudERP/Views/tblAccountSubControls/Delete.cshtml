@@ -1,0 +1,57 @@
+﻿@model DatabaseAccess.tblAccountSubControl
+
+@{
+    ViewBag.Title = "Delete Account SubControl";
+}
+
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+     
+
+        <dt>
+            Account SubControl
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountSubControlName)
+        </dd>
+
+        <dt>
+            Account Control
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblAccountControl.AccountControlName)
+        </dd>
+
+        <dt>
+            Account Head
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblAccountHead.AccountHeadName)
+        </dd>
+
+        <dt>
+            Added By
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblUser.FullName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
