@@ -4,7 +4,6 @@
     ViewBag.Title = "Employee Registration";
 }
 
-<h2>Register An Employee</h2>
 
 @using (Html.BeginForm("EmployeeRegistration", "BranchEmployee", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -12,10 +11,26 @@
 
 
 <div class="form-horizontal">
-    <h4>Registration Form </h4>
+
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.EmployeeID)
+
+
+   
+   
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BranchID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("BranchID",
+                (SelectList)ViewBag.Branches,
+                "-- Select Branch --",
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.BranchID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
 
 
     <div class="form-group">

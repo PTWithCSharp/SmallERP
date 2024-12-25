@@ -18,7 +18,7 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-
+           
 
             int userid = 0;
 
@@ -43,6 +43,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
             return View();
         }
@@ -57,6 +61,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             int userid = 0;
 
@@ -91,6 +99,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -114,6 +126,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             int userid = 0;
 

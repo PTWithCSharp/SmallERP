@@ -8,7 +8,17 @@
 @using (Html.BeginForm("AddItem", "PurchaseCart", FormMethod.Post, null))
 {
     @Html.AntiForgeryToken()
-    <h3 class="text-danger">@ViewBag.Message</h3>
+    <h3 class="text-success">@{
+        if(ViewBag.Message!= null)
+                {
+                    @ViewBag.Message;
+}
+else
+                {
+                    @Session["ErrorPurchaseMessage"];
+                }
+
+    }</h3>
 
     <div class="form-horizontal">
       
@@ -72,7 +82,10 @@
                             <th>
                                 Added By
                             </th>
-                            <th></th>
+                            <th>
+                                Purchase Amount
+                            </th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -94,6 +107,13 @@
                                     @Html.DisplayFor(modelItem => item.tblUser.FullName)
                                 </td>
                                 <td>
+                                    @{ 
+                                        double purchaseamount = item.PurchaseQuantity * item.purchaseUnitPrice;
+                                        Html.Display(Convert.ToString(purchaseamount));
+                                    }
+                                    @string.Format("{0:0.000}", Math.Truncate((purchaseamount * 10) / 10))
+                                </td>
+                                <td>
                                     @*@Html.ActionLink("Update", "Edit", new { id = item.CategoryID }, new { @class = "btn  btn-inverse btn-primary fa fa-edit" })
                             @Html.ActionLink("View", "Details", new { id = item.CategoryID }, new { @class = "btn  btn-primary fa fa-exclamation" })*@
                                     @Html.ActionLink("Delete", "DeleteConfirm", new { id = item.PurchaseCartDetailID }, new { @class = "btn  btn-primary fa " })
@@ -103,13 +123,19 @@
                     </tbody>
                     <tfoot>
                         <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td>Total Purchase Amount</td>
+                            <td> @string.Format("{0:0.000}", Math.Truncate((ViewBag.TotalAmount * 10) / 10))</td>
                         </tr>
                     </tfoot>
 
 
                 </table>
                 <div style="float:right">
-                    @Html.ActionLink("Confirm Purchase", "PurchaseConfirm", null, new { @class = "btn  btn-primary fa " })
+                    @Html.ActionLink("Next", "SelectSupplier", null, new { @class = "btn  btn-primary fa " })
                     @Html.ActionLink("Cancel", "CancelPurchase", null, new { @class = "btn btn-danger  btn-primary fa" })
                 </div>
             </div>

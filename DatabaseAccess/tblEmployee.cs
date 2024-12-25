@@ -37,7 +37,7 @@ namespace DatabaseAccess
         public Nullable<int> UserID { get; set; }
 
         [NotMapped]
-        public HttpPostedFileBase LogoFile { get; set; }    
+        public HttpPostedFileBase LogoFile { get; set; }
     
         public virtual tblBranch tblBranch { get; set; }
         public virtual tblCompany tblCompany { get; set; }

@@ -1,17 +1,17 @@
 ﻿@model DatabaseAccess.tblCompany
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Update Company";
 }
 
-<h2>Edit</h2>
+
 
 @using (Html.BeginForm("Edit", "tblCompanies", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>tblCompany</h4>
+   
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.CompanyID)

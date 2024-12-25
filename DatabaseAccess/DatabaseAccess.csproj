@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -70,14 +71,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CloudDbV1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Code\DatabaseQuery.cs" />
+    <Compile Include="Code\PurchaseEntry.cs" />
+    <Compile Include="Code\SaleEntry.cs" />
+    <Compile Include="Code\SP_Code\SP_Purchase.cs" />
+    <Compile Include="Code\SP_Code\SP_Sale.cs" />
+    <Compile Include="Models\CustomerPaymentModel.cs" />
+    <Compile Include="Models\PurchasePaymentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagram.cs">
+      <DependentUpon>CloudDbV1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAccountActivity.cs">
       <DependentUpon>CloudDbV1.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAccountControl.cs">
       <DependentUpon>CloudDbV1.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAccountHead.cs">
+      <DependentUpon>CloudDbV1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAccountSetting.cs">
       <DependentUpon>CloudDbV1.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAccountSubControl.cs">
@@ -175,6 +189,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -4,10 +4,10 @@
     ViewBag.Title = "Company Details";
 }
 
-<h2>Company</h2>
+
 
 <div>
-    <h4>Details</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -23,7 +23,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Logo)
+            @if (!string.IsNullOrEmpty(Model.Logo))
+            {
+                <img src="@Url.Content(Model.Logo)" alt="Image" style="width:50px;height:50px;max-width:100%;height:auto;" />
+            }
+
         </dd>
 
     </dl>

@@ -14,10 +14,11 @@ namespace CloudERP.Controllers
         // GET: tblCategories
         public ActionResult Index()
         {
-            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
             }
+            
             int companyId = 0;
             int branchId = 0;
             branchId = Convert.ToInt32(Convert.ToString(Session["BranchID"]));

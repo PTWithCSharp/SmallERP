@@ -18,6 +18,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
             int companyId = 0;
             int branchId = 0;
@@ -36,6 +40,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
 
             if (id == null)
@@ -57,12 +65,18 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
             {
-                return RedirectToAction("Login", "Home");
+                return RedirectToAction("EP600", "EP");
             }
+            int companyId = 0;
+            int branchId = 0;
+            int userid = 0;
+            branchId = Convert.ToInt32(Convert.ToString(Session["BranchID"]));
+            companyId = Convert.ToInt32(Convert.ToString(Session["CompanyID"]));
+            userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
 
-            ViewBag.AccountControlID = new SelectList(db.tblAccountControls, "AccountControlID", "AccountControlName", "0");
+            ViewBag.AccountControlID = new SelectList(db.tblAccountControls.Where(a => a.BranchID == branchId && a.CompanyID == companyId), "AccountControlID", "AccountControlName", "0");
 
 
             return View();
@@ -78,6 +92,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
 
             int companyId = 0;
@@ -110,7 +128,7 @@ namespace CloudERP.Controllers
 
             }
 
-            ViewBag.AccountControlID = new SelectList(db.tblAccountControls, "AccountControlID", "AccountControlName", tblAccountSubControl.AccountControlID);
+            ViewBag.AccountControlID = new SelectList(db.tblAccountControls.Where(a => a.BranchID == branchId && a.CompanyID == companyId), "AccountControlID", "AccountControlName", tblAccountSubControl.AccountControlID);
             ViewBag.AccountHeadID = new SelectList(db.tblAccountHeads, "AccountHeadID", "AccountHeadName", tblAccountSubControl.AccountHeadID);
 
             return View(tblAccountSubControl);
@@ -123,6 +141,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -132,7 +154,17 @@ namespace CloudERP.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AccountControlID = new SelectList(db.tblAccountControls, "AccountControlID", "AccountControlName", tblAccountSubControl.AccountControlID);
+            int companyId = 0;
+            int branchId = 0;
+            int userid = 0;
+            branchId = Convert.ToInt32(Convert.ToString(Session["BranchID"]));
+            companyId = Convert.ToInt32(Convert.ToString(Session["CompanyID"]));
+            userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tblAccountSubControl.BranchID = branchId;
+            tblAccountSubControl.CompanyID = companyId;
+            tblAccountSubControl.UserID = userid;
+
+            ViewBag.AccountControlID = new SelectList(db.tblAccountControls.Where(a => a.BranchID == branchId && a.CompanyID == companyId), "AccountControlID", "AccountControlName", tblAccountSubControl.AccountControlID);
 
 
             return View(tblAccountSubControl);
@@ -149,12 +181,20 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
 
+            int companyId = 0;
+            int branchId = 0;
             int userid = 0;
-
+            branchId = Convert.ToInt32(Convert.ToString(Session["BranchID"]));
+            companyId = Convert.ToInt32(Convert.ToString(Session["CompanyID"]));
             userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
-
+            tblAccountSubControl.BranchID = branchId;
+            tblAccountSubControl.CompanyID = companyId;
             tblAccountSubControl.UserID = userid;
             tblAccountSubControl.AccountHeadID = db.tblAccountControls.Find(tblAccountSubControl.AccountControlID).AccountHeadID;
 
@@ -173,11 +213,8 @@ namespace CloudERP.Controllers
                 {
                     ViewBag.Message = "Already Exists";
                 }
-
-
             }
-
-            ViewBag.AccountControlID = new SelectList(db.tblAccountControls, "AccountControlID", "AccountControlName", tblAccountSubControl.AccountControlID);
+            ViewBag.AccountControlID = new SelectList(db.tblAccountControls.Where(a => a.BranchID == branchId && a.CompanyID == companyId), "AccountControlID", "AccountControlName", tblAccountSubControl.AccountControlID);
 
             return View(tblAccountSubControl);
         }
@@ -188,6 +225,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             if (id == null)
             {
@@ -209,6 +250,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             tblAccountSubControl tblAccountSubControl = db.tblAccountSubControls.Find(id);
             db.tblAccountSubControls.Remove(tblAccountSubControl);

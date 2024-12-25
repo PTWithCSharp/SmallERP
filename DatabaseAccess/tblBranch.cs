@@ -18,6 +18,7 @@ namespace DatabaseAccess
         public tblBranch()
         {
             this.tblAccountControls = new HashSet<tblAccountControl>();
+            this.tblAccountSettings = new HashSet<tblAccountSetting>();
             this.tblAccountSubControls = new HashSet<tblAccountSubControl>();
             this.tblCategories = new HashSet<tblCategory>();
             this.tblCustomers = new HashSet<tblCustomer>();
@@ -42,6 +43,8 @@ namespace DatabaseAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAccountControl> tblAccountControls { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblAccountSetting> tblAccountSettings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAccountSubControl> tblAccountSubControls { get; set; }
         public virtual tblBranchType tblBranchType { get; set; }

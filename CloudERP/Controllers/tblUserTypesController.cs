@@ -1,4 +1,5 @@
 ﻿using DatabaseAccess;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -17,6 +18,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             return View(db.tblUserTypes.ToList());
         }
 
@@ -26,6 +31,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             if (id == null)
             {
@@ -46,6 +55,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             return View();
         }
 
@@ -59,6 +72,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             if (ModelState.IsValid)
             {
@@ -76,6 +93,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             if (id == null)
             {
@@ -100,6 +121,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(tblUserType).State = EntityState.Modified;
@@ -115,6 +140,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             if (id == null)
             {
@@ -136,6 +165,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             tblUserType tblUserType = db.tblUserTypes.Find(id);
             db.tblUserTypes.Remove(tblUserType);

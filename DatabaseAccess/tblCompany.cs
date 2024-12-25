@@ -20,6 +20,7 @@ namespace DatabaseAccess
         public tblCompany()
         {
             this.tblAccountControls = new HashSet<tblAccountControl>();
+            this.tblAccountSettings = new HashSet<tblAccountSetting>();
             this.tblCategories = new HashSet<tblCategory>();
             this.tblCustomers = new HashSet<tblCustomer>();
             this.tblCustomerInvoices = new HashSet<tblCustomerInvoice>();
@@ -36,12 +37,15 @@ namespace DatabaseAccess
         public int CompanyID { get; set; }
         public string Name { get; set; }
         public string Logo { get; set; }
-
+     
         [NotMapped]
-        public HttpPostedFileBase LogoFile { get; set; }    
-    
+        public HttpPostedFileBase LogoFile { get; set; }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAccountControl> tblAccountControls { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblAccountSetting> tblAccountSettings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCategory> tblCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

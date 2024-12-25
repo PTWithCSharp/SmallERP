@@ -1,6 +1,7 @@
 ﻿using CloudERP.HelperClass;
 using DatabaseAccess;
 using System;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -16,6 +17,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             int companyId = 0;
             int branchId = 0;
@@ -46,6 +51,17 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
+
+            int companyId = Convert.ToInt32(Convert.ToString(Session["CompanyID"]));
+
+            var branches = db.tblBranches.Where(b => b.CompanyID == companyId).ToList();
+
+            // Populate ViewBag with the list of branches for dropdown
+            ViewBag.Branches = new SelectList(branches, "BranchID", "BranchName");
 
             return View();
         }
@@ -59,13 +75,16 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
             int companyId = 0;
-            int branchId = 0;
-            branchId = Convert.ToInt32(Convert.ToString(Session["BranchID"]));
+
             companyId = Convert.ToInt32(Convert.ToString(Session["CompanyID"]));
 
-            employee.BranchID = branchId;
+
             employee.CompanyID = companyId;
 
             if (ModelState.IsValid)
@@ -128,6 +147,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -137,6 +160,13 @@ namespace CloudERP.Controllers
             {
                 return HttpNotFound();
             }
+            int companyId = Convert.ToInt32(Convert.ToString(Session["CompanyID"]));
+
+            var branches = db.tblBranches.Where(b => b.CompanyID == companyId).ToList();
+
+            // Populate ViewBag with the list of branches for dropdown
+            ViewBag.Branches = new SelectList(branches, "BranchID", "BranchName");
+
             return View(employee);
         }
 
@@ -149,6 +179,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
 
             //int companyId = 0;
@@ -169,6 +203,7 @@ namespace CloudERP.Controllers
 
 
                 existingEmployee.Name = employee.Name;
+                existingEmployee.BranchID = employee.BranchID;
                 existingEmployee.ContactNo = employee.ContactNo;
                 existingEmployee.Email = employee.Email;
                 existingEmployee.Address = employee.Address;
@@ -202,6 +237,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -221,6 +260,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             if (id == null)
             {
@@ -242,6 +285,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
             try
             {

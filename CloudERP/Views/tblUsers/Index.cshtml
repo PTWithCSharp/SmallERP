@@ -71,9 +71,15 @@
                                     @Html.DisplayFor(modelItem => item.tblUserType.UserType)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Update", "Edit", new { id = item.UserID }, new { @class = "btn  btn-inverse btn-primary fa fa-edit" })
+                                    @{
+                                        if (Convert.ToInt32(Session["BranchTypeID"]) == 1)
+                                        {
+
+                                                 @Html.ActionLink("Update", "Edit", new { id = item.UserID }, new { @class = "btn  btn-inverse btn-primary fa fa-edit" })
+                                        }
+                                    }
                                     @Html.ActionLink("View", "Details", new { id = item.UserID }, new { @class = "btn  btn-primary fa fa-exclamation" })
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @class = "btn  btn-primary fa fa-exclamation" })
+                                    @*@Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @class = "btn  btn-primary fa fa-exclamation" })*@
                                 </td>
                             </tr>
                         }

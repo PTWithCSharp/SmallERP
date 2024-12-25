@@ -25,5 +25,7 @@ namespace DatabaseAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblUser> tblUsers { get; set; }
+        public virtual tblUserType tblUserType1 { get; set; }
+        public virtual tblUserType tblUserType2 { get; set; }
     }
 }

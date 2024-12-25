@@ -19,6 +19,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
             int companyId = 0;
             int branchId = 0;
@@ -28,13 +32,21 @@ namespace CloudERP.Controllers
             userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
 
 
-            var tblAccountHeads = db.tblAccountHeads.Include(t => t.tblUser).Where(a => a.CompanyID == companyId && a.BranchID == branchId);
+            var tblAccountHeads = db.tblAccountHeads.Include(t => t.tblUser).ToList();
             return View(tblAccountHeads.ToList());
         }
 
         // GET: tblAccountHeads/Details/5
         public ActionResult Details(int? id)
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -65,6 +77,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
             int companyId = 0;
             int branchId = 0;
@@ -72,14 +88,13 @@ namespace CloudERP.Controllers
             branchId = Convert.ToInt32(Convert.ToString(Session["BranchID"]));
             companyId = Convert.ToInt32(Convert.ToString(Session["CompanyID"]));
             userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
-            tblAccountHead.BranchID = branchId;
-            tblAccountHead.CompanyID = companyId;
+
             tblAccountHead.UserID = userid;
 
 
             if (ModelState.IsValid)
             {
-                var findhead = db.tblAccountHeads.Where(a => a.CompanyID == companyId && a.BranchID == branchId && a.AccountHeadName == tblAccountHead.AccountHeadName).FirstOrDefault();
+                var findhead = db.tblAccountHeads.Where(a => a.AccountHeadName == tblAccountHead.AccountHeadName).FirstOrDefault();
 
                 if (findhead == null)
                 {
@@ -102,6 +117,14 @@ namespace CloudERP.Controllers
         // GET: tblAccountHeads/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -125,6 +148,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
 
             int userid = 0;
@@ -136,7 +163,7 @@ namespace CloudERP.Controllers
 
             if (ModelState.IsValid)
             {
-                var findhead = db.tblAccountHeads.Where(a => a.CompanyID == tblAccountHead.CompanyID && a.BranchID == tblAccountHead.BranchID && a.AccountHeadName == tblAccountHead.AccountHeadName && a.AccountHeadID != tblAccountHead.AccountHeadID).FirstOrDefault();
+                var findhead = db.tblAccountHeads.Where(a => a.AccountHeadName == tblAccountHead.AccountHeadName && a.AccountHeadID != tblAccountHead.AccountHeadID).FirstOrDefault();
 
                 if (findhead == null)
                 {
@@ -160,6 +187,14 @@ namespace CloudERP.Controllers
         // GET: tblAccountHeads/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

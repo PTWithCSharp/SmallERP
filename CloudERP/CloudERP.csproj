@@ -133,8 +133,12 @@
     <Compile Include="Controllers\HeadEmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PurchaseCartController.cs" />
+    <Compile Include="Controllers\PurchasePaymentController.cs" />
+    <Compile Include="Controllers\SaleCartController.cs" />
+    <Compile Include="Controllers\SalePaymentController.cs" />
     <Compile Include="Controllers\tblAccountControlsController.cs" />
     <Compile Include="Controllers\tblAccountHeadsController.cs" />
+    <Compile Include="Controllers\tblAccountSettingsController.cs" />
     <Compile Include="Controllers\tblAccountSubControlsController.cs" />
     <Compile Include="Controllers\tblBranchesController.cs" />
     <Compile Include="Controllers\tblCategoriesController.cs" />
@@ -154,8 +158,10 @@
     <Compile Include="HelperClass\FileHelper.cs" />
     <Compile Include="HelperClass\ListAccounts.cs" />
     <Compile Include="Models\AccountControlMV.cs" />
+    <Compile Include="Models\AccountSubControlMV.cs" />
     <Compile Include="Models\BranchCustomerMV.cs" />
     <Compile Include="Models\BranchSuppliersMV.cs" />
+    <Compile Include="Models\AccountSettingMV.cs" />
     <Compile Include="Models\CompanyRegistrationModel.cs" />
     <Compile Include="Models\ProductMV.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -485,6 +491,24 @@
     <Content Include="Views\tblSuppliers\AllSupplier.cshtml" />
     <Content Include="Views\PurchaseCart\NewPurchase.cshtml" />
     <Content Include="Views\PurchaseCart\AddItem.cshtml" />
+    <Content Include="Views\tblAccountSettings\Create.cshtml" />
+    <Content Include="Views\tblAccountSettings\Delete.cshtml" />
+    <Content Include="Views\tblAccountSettings\Details.cshtml" />
+    <Content Include="Views\tblAccountSettings\Edit.cshtml" />
+    <Content Include="Views\tblAccountSettings\Index.cshtml" />
+    <Content Include="Views\PurchaseCart\SelectSupplier.cshtml" />
+    <Content Include="Views\PurchasePayment\RemainingPaymentList.cshtml" />
+    <Content Include="Views\PurchasePayment\PaidAmount.cshtml" />
+    <Content Include="Views\PurchasePayment\PaidHistory.cshtml" />
+    <Content Include="Views\SaleCart\NewSale.cshtml" />
+    <Content Include="Views\SaleCart\SelectCustomer.cshtml" />
+    <Content Include="Views\SalePayment\RemainingPaymentList.cshtml" />
+    <Content Include="Views\SalePayment\PaidHistory.cshtml" />
+    <Content Include="Views\SalePayment\PaidAmount.cshtml" />
+    <Content Include="Views\PurchasePayment\CustomPurchaseHistory.cshtml" />
+    <Content Include="Views\SalePayment\CustomSaleHistory.cshtml" />
+    <Content Include="Views\PurchasePayment\PurchaseItemDetail.cshtml" />
+    <Content Include="Views\SalePayment\SaleItemDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

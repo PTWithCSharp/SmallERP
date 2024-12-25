@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Net.Mail;
 using System.Web.Mvc;
 
 namespace CloudERP.Controllers
@@ -142,6 +144,76 @@ namespace CloudERP.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
+        public ActionResult ForgetPassword(string email)
+        {
+            // Find the user in the database
+            var user = db.tblUsers.Where(u => u.Email == email).FirstOrDefault();
+
+            if (user != null)
+            {
+                // Generate a new random password
+                string newPassword = GenerateRandomPassword();
+
+                // Update the user's password in the database (hashed if needed)
+                user.Password = newPassword; // Use a hashing mechanism here if passwords are hashed
+                db.SaveChanges();
+
+                // Send the new password via Gmail
+                string subject = "Your New Password";
+                string body = $"Hello {user.UserName},\n\nYour new password is: {newPassword}\n\nPlease change your password after logging in.";
+
+                try
+                {
+                    SendEmail(email, subject, body);
+                    ViewBag.Message = "A new password has been sent to your email address.";
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "Error while sending email: " + ex.Message;
+                }
+            }
+            else
+            {
+                ViewBag.Message = "Email address not found.";
+            }
+
+            return View("Login");
+        }
+
+        private string GenerateRandomPassword(int length = 8)
+        {
+            const string validChars = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+            Random random = new Random();
+            return new string(Enumerable.Repeat(validChars, length)
+                                  .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        // Helper method to send email using MailDev
+        private void SendEmail(string toEmail, string subject, string body)
+        {
+            var fromEmail = "test@example.com"; // Use any dummy email address
+            var smtp = new SmtpClient
+            {
+                Host = "localhost",  // MailDev runs on localhost
+                Port = 1025,         // MailDev's default SMTP port
+                EnableSsl = false,   // MailDev does not require SSL
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = true // MailDev does not require authentication
+            };
+
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+        }
+
 
         public ActionResult About()
         {

@@ -75,7 +75,7 @@ namespace CloudERP.Controllers
                         IsActive = true,
                         Password = Password,
                         UserName = UserName,
-                        UserTypeID = 2,
+                        UserTypeID = 1,
                     };
                     db.tblUsers.Add(user);
                     db.SaveChanges();
@@ -93,6 +93,7 @@ namespace CloudERP.Controllers
 
                         Name = EName,
                         Description = string.Empty,
+                        UserID = user.UserID,
                     };
                     db.tblEmployees.Add(employee);
                     db.SaveChanges();

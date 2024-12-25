@@ -26,8 +26,10 @@ namespace DatabaseAccess
         }
     
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tblAccountActivity> tblAccountActivities { get; set; }
         public virtual DbSet<tblAccountControl> tblAccountControls { get; set; }
         public virtual DbSet<tblAccountHead> tblAccountHeads { get; set; }
+        public virtual DbSet<tblAccountSetting> tblAccountSettings { get; set; }
         public virtual DbSet<tblAccountSubControl> tblAccountSubControls { get; set; }
         public virtual DbSet<tblBranch> tblBranches { get; set; }
         public virtual DbSet<tblBranchType> tblBranchTypes { get; set; }

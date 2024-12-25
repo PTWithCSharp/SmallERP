@@ -1,17 +1,17 @@
 ﻿@model DatabaseAccess.tblBranch
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Update Branch";
 }
 
-<h2>Edit</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>tblBranch</h4>
+     
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BranchID)

@@ -6,12 +6,12 @@
 <h2>RegistrationForm</h2>
 
 <div class="card card-default">
-    <div class="card-header">Registration Form
+    <div class="card-header"></div>
     @ViewBag.Message
-    </div>
+   
     <div class="card-body">
 
-        @using (Html.BeginForm("RegistrationForm", "CompanyRegistration",FormMethod.Post,new {@id="example-form"}))
+        @using (Html.BeginForm("RegistrationForm", "CompanyRegistration",FormMethod.Post,new {@id=""}))
         {
             @Html.AntiForgeryToken()
             <div>
@@ -45,8 +45,7 @@
                     <input class="form-control required" id="ECNIC" name="ECNIC" type="text">
                     <label>Designation</label>
                     <input class="form-control required" id="EDesignation" name="EDesignation" type="text">
-                    <label>Description</label>
-                    <input class="form-control" id="EDescription" name="EDescription" type="text">
+       
                     <label>Basic Salary</label>
                     <input class="form-control required" id="EMonthlySalary" name="EMonthlySalary" type="text">
                     <label for="address">Address</label>
@@ -71,16 +70,13 @@
 
                     <p>(*) Mandatory</p>
                 </fieldset>
-                <h4>
-                    Finish
-                    <br>
-                    <small>Just Make Sure You Entered Correct Information</small>
-                </h4>
+              
                 <fieldset>
-                    <p class="lead">One last check</p>
+                 
                     <input type="submit" value="Submit Registration" class="btn btn-outline-success" />
                 </fieldset>
             </div>
         }
-        </div>
+       
+    </div>
 </div>

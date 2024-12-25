@@ -23,6 +23,10 @@ namespace CloudERP.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
             int companyId = 0;
             int branchId = 0;
@@ -55,6 +59,14 @@ namespace CloudERP.Controllers
         // GET: tblAccountControls/Details/5
         public ActionResult Details(int? id)
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             accountControl.Clear();
             if (id == null)
             {
@@ -71,6 +83,14 @@ namespace CloudERP.Controllers
         // GET: tblAccountControls/Create
         public ActionResult Create()
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
 
             ViewBag.AccountHeadID = new SelectList(db.tblAccountHeads, "AccountHeadID", "AccountHeadName");
 
@@ -84,11 +104,15 @@ namespace CloudERP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(tblAccountControl tblAccountControl)
         {
+
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
             }
-
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             int companyId = 0;
             int branchId = 0;
             int userid = 0;
@@ -123,10 +147,19 @@ namespace CloudERP.Controllers
         // GET: tblAccountControls/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             tblAccountControl tblAccountControl = db.tblAccountControls.Find(id);
             if (tblAccountControl == null)
             {
@@ -146,6 +179,10 @@ namespace CloudERP.Controllers
             if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
             {
                 return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
             }
 
 
@@ -180,6 +217,14 @@ namespace CloudERP.Controllers
         // GET: tblAccountControls/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -197,6 +242,14 @@ namespace CloudERP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (string.IsNullOrEmpty(System.Convert.ToString(Session["CompanyID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (Convert.ToInt32(Session["UserTypeID"]) == 2)
+            {
+                return RedirectToAction("EP600", "EP");
+            }
             tblAccountControl tblAccountControl = db.tblAccountControls.Find(id);
             db.tblAccountControls.Remove(tblAccountControl);
             db.SaveChanges();
